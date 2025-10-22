@@ -42,26 +42,27 @@ const DashboardRouter = () => {
     <div className="min-h-screen bg-gray-100">
       {/* Navigation */}
       <nav className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-14 sm:h-16">
             <div className="flex items-center">
-              <Link to="/dashboard" className="text-xl font-semibold text-gray-900 hover:text-gray-700">
-                P2P Lending Platform
+              <Link to="/dashboard" className="text-lg sm:text-xl font-semibold text-gray-900 hover:text-gray-700 truncate">
+                <span className="hidden sm:inline">P2P Lending Platform</span>
+                <span className="sm:hidden">P2P Lending</span>
               </Link>
             </div>
-            <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-700">
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              <span className="text-xs sm:text-sm text-gray-700 hidden xs:inline">
                 Welcome, {user?.firstName}
               </span>
               <Link
                 to="/notifications"
-                className="text-gray-500 hover:text-gray-700 relative"
+                className="text-gray-500 hover:text-gray-700 relative p-1"
               >
-                <IoNotifications size={20} />
+                <IoNotifications size={18} className="sm:w-5 sm:h-5" />
               </Link>
               <button
                 onClick={() => setShowProfileSidebar(true)}
-                className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-bold hover:shadow-lg transition-all duration-200"
+                className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xs sm:text-sm font-bold hover:shadow-lg transition-all duration-200"
               >
                 {user?.profilePicture ? (
                   <img 

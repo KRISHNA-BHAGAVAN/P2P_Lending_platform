@@ -75,28 +75,28 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="max-w-4xl mx-auto p-4 sm:p-6">
       <div className="bg-white rounded-lg shadow-md">
-        <div className="px-6 py-4 border-b border-gray-200">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-semibold text-gray-900">Edit Profile</h1>
+        <div className="px-4 sm:px-6 py-4 border-b border-gray-200">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
+            <h1 className="text-xl sm:text-2xl font-semibold text-gray-900">Edit Profile</h1>
             <button
               onClick={() => navigate('/profile')}
-              className="text-gray-600 hover:text-gray-800 transition-colors"
+              className="text-gray-600 hover:text-gray-800 transition-colors text-sm sm:text-base self-start sm:self-auto"
             >
               Cancel
             </button>
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-6">
+        <form onSubmit={handleSubmit} className="p-4 sm:p-6">
           {/* Profile Picture Section */}
-          <div className="mb-8">
+          <div className="mb-6 sm:mb-8">
             <label className="block text-sm font-medium text-gray-700 mb-4">
               Profile Picture
             </label>
-            <div className="flex items-center space-x-6">
-              <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-3xl font-bold overflow-hidden">
+            <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl sm:text-3xl font-bold overflow-hidden self-center sm:self-start">
                 {user?.profilePicture ? (
                   <img 
                     src={user.profilePicture.startsWith('http') ? user.profilePicture : `${API_BASE_URL}${user.profilePicture}`}  
@@ -107,7 +107,7 @@ const EditProfile = () => {
                   user?.firstName?.charAt(0)?.toUpperCase()
                 )}
               </div>
-              <div>
+              <div className="flex-1">
                 <input
                   type="file"
                   id="profilePicture"
@@ -116,10 +116,10 @@ const EditProfile = () => {
                   className="hidden"
                   disabled={uploadingPhoto}
                 />
-                <div className="flex space-x-3">
+                <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
                   <label
                     htmlFor="profilePicture"
-                    className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50 inline-block"
+                    className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50 inline-block text-center text-sm sm:text-base"
                   >
                     {uploadingPhoto ? 'Uploading...' : 'Change Photo'}
                   </label>
@@ -128,7 +128,7 @@ const EditProfile = () => {
                       type="button"
                       onClick={handleDeletePhoto}
                       disabled={uploadingPhoto}
-                      className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors disabled:opacity-50"
+                      className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors disabled:opacity-50 text-sm sm:text-base"
                     >
                       Remove Photo
                     </button>
@@ -141,7 +141,7 @@ const EditProfile = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 First Name
@@ -196,7 +196,7 @@ const EditProfile = () => {
               />
             </div>
 
-            <div className="md:col-span-2">
+            <div className="sm:col-span-2">
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Address
               </label>
@@ -205,23 +205,23 @@ const EditProfile = () => {
                 value={formData.address}
                 onChange={handleChange}
                 rows={3}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
               />
             </div>
           </div>
 
-          <div className="flex justify-end space-x-4 mt-6">
+          <div className="flex flex-col sm:flex-row sm:justify-end space-y-3 sm:space-y-0 sm:space-x-4 mt-6">
             <button
               type="button"
               onClick={() => navigate('/profile')}
-              className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+              className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors text-sm sm:text-base order-2 sm:order-1"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50"
+              className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50 text-sm sm:text-base order-1 sm:order-2"
             >
               {loading ? 'Saving...' : 'Save Changes'}
             </button>

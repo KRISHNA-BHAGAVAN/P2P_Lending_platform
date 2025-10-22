@@ -92,30 +92,30 @@ const NotificationCenter = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <div className="flex justify-between items-center mb-6">
-        <div className="flex items-center space-x-4">
+    <div className="max-w-4xl mx-auto p-4 sm:p-6">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 space-y-4 sm:space-y-0">
+        <div className="flex items-center space-x-3 sm:space-x-4">
           <Link 
             to="/dashboard"
             className="text-gray-500 hover:text-gray-700"
           >
-            <IoArrowBack size={24} />
+            <IoArrowBack size={20} className="sm:w-6 sm:h-6" />
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
             Notifications
             {unreadCount > 0 && (
-              <span className="ml-2 px-2 py-1 bg-red-500 text-white text-sm rounded-full">
+              <span className="ml-2 px-2 py-1 bg-red-500 text-white text-xs sm:text-sm rounded-full">
                 {unreadCount}
               </span>
             )}
           </h1>
         </div>
         
-        <div className="flex space-x-4">
+        <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
           <select 
             value={filter} 
             onChange={(e) => setFilter(e.target.value)}
-            className="border rounded px-3 py-2"
+            className="border rounded px-3 py-2 text-sm sm:text-base w-full sm:w-auto"
           >
             <option value="all">All Notifications</option>
             <option value="unread">Unread Only</option>
@@ -124,7 +124,7 @@ const NotificationCenter = () => {
           {unreadCount > 0 && (
             <button
               onClick={markAllAsRead}
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm sm:text-base w-full sm:w-auto"
             >
               Mark All Read
             </button>
@@ -133,26 +133,26 @@ const NotificationCenter = () => {
       </div>
 
       {notifications.length === 0 ? (
-        <div className="text-center py-12">
-          <p className="text-gray-500 text-lg">No notifications found</p>
+        <div className="text-center py-8 sm:py-12">
+          <p className="text-gray-500 text-base sm:text-lg">No notifications found</p>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {notifications.map((notification) => (
             <div
               key={notification._id}
-              className={`border-l-4 p-4 rounded-lg shadow-sm ${getPriorityColor(notification.priority)} ${
+              className={`border-l-4 p-3 sm:p-4 rounded-lg shadow-sm ${getPriorityColor(notification.priority)} ${
                 !notification.isRead ? 'bg-white' : 'bg-gray-50'
               }`}
             >
-              <div className="flex justify-between items-start">
-                <div className="flex items-start space-x-3">
-                  <span className="text-xl">{getNotificationIcon(notification.type)}</span>
-                  <div className="flex-1">
-                    <h3 className={`font-semibold ${!notification.isRead ? 'text-gray-900' : 'text-gray-600'}`}>
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start space-y-3 sm:space-y-0">
+                <div className="flex items-start space-x-2 sm:space-x-3 flex-1">
+                  <span className="text-lg sm:text-xl mt-0.5">{getNotificationIcon(notification.type)}</span>
+                  <div className="flex-1 min-w-0">
+                    <h3 className={`font-semibold text-sm sm:text-base ${!notification.isRead ? 'text-gray-900' : 'text-gray-600'}`}>
                       {notification.title}
                     </h3>
-                    <p className={`mt-1 ${!notification.isRead ? 'text-gray-700' : 'text-gray-500'}`}>
+                    <p className={`mt-1 text-sm sm:text-base ${!notification.isRead ? 'text-gray-700' : 'text-gray-500'} break-words`}>
                       {notification.message}
                     </p>
                     <p className="text-xs text-gray-400 mt-2">
@@ -161,18 +161,18 @@ const NotificationCenter = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center justify-end space-x-2 sm:space-x-3 flex-shrink-0">
                   {!notification.isRead && (
                     <button
                       onClick={() => markAsRead(notification._id)}
-                      className="text-blue-600 hover:text-blue-800 text-sm"
+                      className="text-blue-600 hover:text-blue-800 text-xs sm:text-sm px-2 py-1 rounded hover:bg-blue-50"
                     >
                       Mark Read
                     </button>
                   )}
                   <button
                     onClick={() => deleteNotification(notification._id)}
-                    className="text-red-600 hover:text-red-800 text-sm"
+                    className="text-red-600 hover:text-red-800 text-xs sm:text-sm px-2 py-1 rounded hover:bg-red-50"
                   >
                     Delete
                   </button>

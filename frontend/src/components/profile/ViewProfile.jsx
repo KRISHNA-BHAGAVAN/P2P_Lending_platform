@@ -9,33 +9,32 @@ const ViewProfile = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="max-w-4xl mx-auto p-4 sm:p-6">
       <div className="bg-white rounded-lg shadow-md">
-        <div className="px-6 py-4 border-b border-gray-200">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
+        <div className="px-4 sm:px-6 py-4 border-b border-gray-200">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
+            <div className="flex items-center space-x-3 sm:space-x-4">
               <button
                 onClick={() => navigate('/dashboard')}
                 className="text-gray-600 hover:text-gray-800 transition-colors flex items-center space-x-1"
               >
-                <IoArrowBack size={24} />
-                {/* <span>Back</span> */}
+                <IoArrowBack size={20} className="sm:w-6 sm:h-6" />
               </button>
-              <h1 className="text-2xl font-semibold text-gray-900">Profile</h1>
+              <h1 className="text-xl sm:text-2xl font-semibold text-gray-900">Profile</h1>
             </div>
             <button
               onClick={() => navigate('/profile/edit')}
-              className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+              className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors text-sm sm:text-base w-full sm:w-auto"
             >
               Edit Profile
             </button>
           </div>
         </div>
 
-        <div className="p-6">
-          <div className="flex items-start space-x-6">
-            <div className="flex-shrink-0">
-              <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-3xl font-bold overflow-hidden">
+        <div className="p-4 sm:p-6">
+          <div className="flex flex-col sm:flex-row sm:items-start space-y-4 sm:space-y-0 sm:space-x-6">
+            <div className="flex-shrink-0 self-center sm:self-start">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl sm:text-3xl font-bold overflow-hidden">
                 {user?.profilePicture ? (
                   <img 
                     src={user.profilePicture.startsWith('http') ? user.profilePicture : `${API_BASE_URL}${user.profilePicture}`} 
@@ -49,7 +48,7 @@ const ViewProfile = () => {
             </div>
 
             <div className="flex-1">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     First Name
@@ -104,11 +103,11 @@ const ViewProfile = () => {
                   </p>
                 </div>
 
-                <div className="md:col-span-2">
+                <div className="sm:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Address
                   </label>
-                  <p className="text-gray-900 bg-gray-50 px-3 py-2 rounded-md">
+                  <p className="text-gray-900 bg-gray-50 px-3 py-2 rounded-md break-words">
                     {user?.address || 'Not provided'}
                   </p>
                 </div>
