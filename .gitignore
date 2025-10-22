@@ -48,12 +48,14 @@ coverage/
 ehthumbs.db
 Thumbs.db
 
-# Uploads
-backend/uploads/
+# Uploads (keep structure but ignore content)
+backend/uploads/*
+!backend/uploads/.gitkeep
 
 # Cache
 .cache/
 .parcel-cache/
+.next/
 
 # Temporary files
 *.tmp
@@ -62,3 +64,25 @@ backend/uploads/
 # Cookie files
 cookies.txt
 *.cookies
+
+# Package manager lock files (optional - uncomment if needed)
+# package-lock.json
+# yarn.lock
+
+# Editor directories and files
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
+*.sublime-project
+*.sublime-workspace
+
+# Local development
+.env.development
+.env.production
+
+# Testing
+/coverage
+
+# Misc
+*.tgz
+*.tar.gz
